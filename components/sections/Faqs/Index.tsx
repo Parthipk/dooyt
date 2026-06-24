@@ -2,63 +2,30 @@
 
 import { useState } from "react";
 import { Minus, Plus } from "lucide-react";
+import { useFaq } from "@/hooks/useFaq";
 
 type Faq = {
-  id: string;
+  _id?: string;
+  id?: string;
   order: number;
   question: string;
   answer: string;
 };
 
-const faqs: Faq[] = [
-  {
-    id: "f1",
-    order: 1,
-    question: "What is Dooyt?",
-    answer:
-      "Dooyt is an easy-to-use ERP software designed to help businesses manage their projects, clients, and tasks efficiently in one place.",
-  },
-  {
-    id: "f2",
-    order: 2,
-    question: "Do you provide customer support?",
-    answer:
-      "Yes. Every plan includes support, with priority and 24/7 premium options on higher tiers.",
-  },
-  {
-    id: "f3",
-    order: 3,
-    question: "Is my data safe with Dooyt?",
-    answer:
-      "Yes. Your data is encrypted in transit and at rest, protected with role-based access control and regular backups.",
-  },
-  {
-    id: "f4",
-    order: 4,
-    question: "Can I change plans easily?",
-    answer:
-      "Absolutely. You can upgrade or downgrade your plan at any time from your account settings.",
-  },
-  {
-    id: "f5",
-    order: 5,
-    question: "Is Dooyt easy to use?",
-    answer:
-      "Dooyt is built for non-technical users with an intuitive, dashboard-driven interface.",
-  },
-  {
-    id: "f6",
-    order: 6,
-    question: "Can I access Dooyt from my mobile phone?",
-    answer: "Yes. Dooyt is available on the web and through our iOS and Android apps.",
-  },
-];
-
 export default function Index() {
-  const [openId, setOpenId] = useState<string | null>(faqs[0]?.id ?? null);
+  const { faqs, loading } = useFaq();
+  const [openId, setOpenId] = useState<string | null>(null);
+
+  if (loading) {
+    return (
+      <div className="mx-auto w-[85%] py-20 text-center">
+        Loading...
+      </div>
+    );
+  }
 
   return (
-    <div className="mx-auto w-[85%] px-6   font-aeonik">
+    <div className="mx-auto w-[85%] px-0 md:px-6 font-aeonik mb-10">
       <h2 className="text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
         Frequently Asked Questions (FAQ)
       </h2>
@@ -66,20 +33,23 @@ export default function Index() {
       <div className="mt-8 flex flex-col gap-3">
         {faqs
           .slice()
-          .sort((a, b) => a.order - b.order)
-          .map((faq) => {
-            const isOpen = openId === faq.id;
+          .sort((a: Faq, b: Faq) => a.order - b.order)
+          .map((faq: Faq) => {
+            const key = faq._id || faq.id;
+            const isOpen = openId === key;
+
             return (
-              <div key={faq.id} className="rounded-2xl bg-gray-100 px-6 py-5">
+              <div key={key} className="rounded-2xl bg-gray-100 px-6 py-5">
                 <button
                   type="button"
-                  onClick={() => setOpenId(isOpen ? null : faq.id)}
+                  onClick={() => setOpenId(isOpen ? null : key || null)}
                   aria-expanded={isOpen}
                   className="flex w-full items-center justify-between gap-4 text-left"
                 >
                   <span className="font-semibold text-gray-900">
                     {faq.question}
                   </span>
+
                   <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gray-900 text-white">
                     {isOpen ? (
                       <Minus className="h-3.5 w-3.5" strokeWidth={2.5} />

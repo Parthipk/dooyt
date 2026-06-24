@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { BadgeCheck, Zap } from "lucide-react";
-import { plans } from "./data"; // adjust path if needed
+import { usePlans } from "@/hooks/usePlans";
 
 type Feature = {
   text: string;
@@ -24,7 +24,7 @@ const toUIPlan = (plan: any): PlanUI => ({
   name: plan.name,
   description: plan.tagline,
   monthlyPrice: plan.monthlyPrice,
-  features: plan.features.map((f: string, i: number) => ({
+  features: (plan.features || []).map((f: string, i: number) => ({
     text: f,
     highlighted: i === 0 && plan.isPopular,
   })),
@@ -37,9 +37,8 @@ function FeatureList({ features }: { features: Feature[] }) {
       {features.map((feature) => (
         <li key={feature.text} className="flex items-start gap-2.5">
           <BadgeCheck
-            className={`mt-0.5 h-5 w-5 shrink-0 ${
-              feature.highlighted ? "text-white" : "text-gray-300"
-            }`}
+            className={`mt-0.5 h-5 w-5 shrink-0 ${feature.highlighted ? "text-white" : "text-gray-300"
+              }`}
             fill={feature.highlighted ? "#f97316" : "none"}
             strokeWidth={1.5}
           />
@@ -110,7 +109,19 @@ function SelectButton() {
 export default function Pricing() {
   const [billing, setBilling] = useState<"monthly" | "annual">("monthly");
 
-  const [starter, pro, enterprise] = plans.map(toUIPlan);
+  const { plans, loading } = usePlans("monthly");
+
+  const uiPlans = plans.map(toUIPlan);
+
+  if (loading || uiPlans.length < 3) {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        Loading...
+      </div>
+    );
+  }
+
+  const [starter, pro, enterprise] = uiPlans;
 
   return (
     <div className="flex min-h-screen w-[85%] flex-col items-center mx-auto md:px-6 md:py-16 font-aeonik">

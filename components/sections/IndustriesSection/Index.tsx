@@ -1,12 +1,27 @@
 "use client";
 
-import { industries } from "./data";
 import DesktopIndustries from "./DesktopIndustries";
 import MobileIndustries from "./MobileIndustries";
+import { useIndustries } from "@/hooks/useIndustry";
+import { industryImages } from "./industryImages";
 
 export default function Index() {
+
+  const { industries, loading } = useIndustries();
+
+
+  if (loading) return null;
+
+
+  // attach images locally
+  const industriesWithImages = industries.map((item) => ({
+    ...item,
+    image: industryImages[item.id] || industryImages["solar"],
+  }));
+
+
   return (
-    <div className="w-full flex flex-col justify-center   font-aeonik  ">
+    <div className="w-full flex flex-col justify-center font-aeonik">
 
       {/* HEADER */}
       <div className="text-center w-full px-[7.5%] mt-20 mx-auto">
@@ -20,10 +35,11 @@ export default function Index() {
       </div>
 
       {/* DESKTOP */}
-      <DesktopIndustries industries={industries} />
+      <DesktopIndustries industries={industriesWithImages} />
 
       {/* MOBILE */}
-      <MobileIndustries industries={industries} />
+      <MobileIndustries industries={industriesWithImages} />
+
     </div>
   );
 }
