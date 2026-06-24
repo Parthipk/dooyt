@@ -2,6 +2,8 @@
 
 import { Star } from "lucide-react";
 import { useTestimonials } from "@/hooks/useTestimonials";
+import TestimonialsShimmer from "./TestimonialsShimmer";
+
 
 function getInitials(name: string) {
   return name
@@ -36,12 +38,9 @@ function StarRating({ rating }: { rating: number }) {
 export default function Index() {
   const { testimonials, loading } = useTestimonials();
 
+
   if (loading) {
-    return (
-      <div className="flex w-[85%] mx-auto justify-center py-20">
-        Loading...
-      </div>
-    );
+    return <TestimonialsShimmer />;
   }
 
   return (

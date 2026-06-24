@@ -4,13 +4,15 @@ import DesktopIndustries from "./DesktopIndustries";
 import MobileIndustries from "./MobileIndustries";
 import { useIndustries } from "@/hooks/useIndustry";
 import { industryImages } from "./industryImages";
+import IndustriesShimmer from "./IndustriesShimmer";
 
 export default function Index() {
 
   const { industries, loading } = useIndustries();
 
 
-  if (loading) return null;
+
+if (loading) return <IndustriesShimmer />;
 
 
   // attach images locally

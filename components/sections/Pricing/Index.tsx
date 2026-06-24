@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { BadgeCheck, Zap } from "lucide-react";
 import { usePlans } from "@/hooks/usePlans";
+import PricingShimmer from "./PricingShimmer";
+
 
 type Feature = {
   text: string;
@@ -113,12 +115,9 @@ export default function Pricing() {
 
   const uiPlans = plans.map(toUIPlan);
 
+
   if (loading || uiPlans.length < 3) {
-    return (
-      <div className="flex min-h-screen items-center justify-center">
-        Loading...
-      </div>
-    );
+    return <PricingShimmer />;
   }
 
   const [starter, pro, enterprise] = uiPlans;

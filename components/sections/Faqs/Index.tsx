@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Minus, Plus } from "lucide-react";
 import { useFaq } from "@/hooks/useFaq";
+import FaqShimmer from "./FaqShimmer";
 
 type Faq = {
   _id?: string;
@@ -16,12 +17,9 @@ export default function Index() {
   const { faqs, loading } = useFaq();
   const [openId, setOpenId] = useState<string | null>(null);
 
+
   if (loading) {
-    return (
-      <div className="mx-auto w-[85%] py-20 text-center">
-        Loading...
-      </div>
-    );
+    return <FaqShimmer />;
   }
 
   return (
