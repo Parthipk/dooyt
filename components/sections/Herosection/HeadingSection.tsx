@@ -12,7 +12,7 @@ export default function HeadingSection() {
 
   return (
     <>
-      <section className="w-[85%] mx-auto flex flex-col items-center text-center mt-10">
+      <section className="w-[85%] mx-auto flex flex-col items-center text-center mt-10 font-aeonik">
 
         {/* Badge */}
         <div className="px-4 py-1 rounded-md bg-(--primary-background)/50 text-primary text-xs font-medium mb-5 flex items-end gap-1">

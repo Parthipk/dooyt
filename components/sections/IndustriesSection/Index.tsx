@@ -7,20 +7,14 @@ import { industryImages } from "./industryImages";
 import IndustriesShimmer from "./IndustriesShimmer";
 
 export default function Index() {
-
   const { industries, loading } = useIndustries();
 
+  if (loading) return <IndustriesShimmer />;
 
-
-if (loading) return <IndustriesShimmer />;
-
-
-  // attach images locally
-  const industriesWithImages = industries.map((item) => ({
+  const industriesWithImages = industries.map((item: any) => ({
     ...item,
     image: industryImages[item.id] || industryImages["solar"],
   }));
-
 
   return (
     <div className="w-full flex flex-col justify-center font-aeonik mt-15 md:mt-20">
@@ -41,7 +35,6 @@ if (loading) return <IndustriesShimmer />;
 
       {/* MOBILE */}
       <MobileIndustries industries={industriesWithImages} />
-
     </div>
   );
 }

@@ -1,22 +1,23 @@
 "use client";
 
 import Image from "next/image";
-import { industries } from "./data";
 
 type CardProps = {
-  i: number;
+  item: any;
   className: string;
   horizontal?: boolean;
 };
 
-const forceTextTop = [4, 5, 1];
+const forceTextTop = ["it-saas", "education", "solar"];
 
-const Card = ({ i, className, horizontal }: CardProps) => {
-  const item = industries[i];
-  const isTextTop = forceTextTop.includes(i) || i % 2 === 0;
+const Card = ({ item, className, horizontal }: CardProps) => {
+  const isTextTop =
+    forceTextTop.includes(item.id) || item.id === "solar";
 
   return (
-    <div className={`${className} bg-[#FFF6F170] p-4 border border-[#EFEFEF] rounded-lg`}>
+    <div
+      className={`${className} bg-[#FFF6F170] p-4 border border-[#EFEFEF] rounded-lg`}
+    >
       {!horizontal ? (
         isTextTop ? (
           <div className="h-full flex flex-col justify-between">

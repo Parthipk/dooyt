@@ -89,7 +89,7 @@ export default function ModulesSection() {
   if (!modules?.length) return null;
 
   return (
-    <section className="w-[85%] bg-white font-aeonik mx-auto mt-15 md:mt-20">
+    <section className="w-[85%] bg-white font-aeonik mx-auto mt-15 md:mt-20" id="modules">
 
       {/* HEADER */}
       <div className="text-center mb-10">

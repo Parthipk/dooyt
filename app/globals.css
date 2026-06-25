@@ -4,12 +4,28 @@
 
 @custom-variant dark (&:is(.dark *));
 
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+/* ✅ Cursor pointer for interactive elements */
+button,
+a,
+[role="button"] {
+  cursor: pointer;
+}
+
+/* Optional: better link behavior */
+a {
+  text-decoration: none;
+}
+
 /* Tailwind theme */
 @theme {
   --color-primary: #050503;
   --color-secondary: #5C5C5C;
 
-  --color-orange:#F46114;
+  --color-orange: #F46114;
 
   --font-aeonik: "Aeonik Pro", sans-serif;
   --font-geist: "Geist", sans-serif;
@@ -19,7 +35,7 @@
 /* Global CSS variables */
 :root {
   --primary-background: #F461141A;
-  --orange-background:#F46114;
+  --orange-background: #F46114;
 
   --card-background: #ffffff;
   --border-color: #e5e7eb;
@@ -138,9 +154,11 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+
   html {
     @apply font-sans;
   }

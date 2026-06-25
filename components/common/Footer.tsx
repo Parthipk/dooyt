@@ -1,5 +1,11 @@
-import Image from "next/image";
 
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+
+import ContactFormModal from "@/components/forms/ContactFormModal";
 import logo from "@/app/assets/footer/logo2.png";
 import apple from "@/app/assets/footer/apple.png";
 import googleplay from "@/app/assets/footer/googleplay.png";
@@ -8,15 +14,41 @@ import twitter from "@/app/assets/footer/twitter.png";
 import linkedIn from "@/app/assets/footer/linkedIn.png";
 import footerbg from "@/app/assets/footer/footerbg.png";
 
+type LinkItem = {
+    label: string;
+    href: string;
+};
+
 type LinkColumn = {
     heading: string;
-    links: string[];
+    links: LinkItem[];
 };
 
 const columns: LinkColumn[] = [
-    { heading: "Quick Links", links: ["Home", "About Us", "Modules"] },
-    { heading: "Explore", links: ["Feature", "Benefits", "Contact"] },
-    { heading: "Quick Links", links: ["Pricing", "Privacy policy", "FAQ"] },
+    {
+        heading: "Quick Links",
+        links: [
+            { label: "Home", href: "/" },
+            { label: "About Us", href: "/" },
+            { label: "Modules", href: "#modules" },
+        ],
+    },
+    {
+        heading: "Explore",
+        links: [
+            { label: "Features", href: "#features" },
+            { label: "Benefits", href: "#benefits" },
+            { label: "Contact", href: "modal:contact" },
+        ],
+    },
+    {
+        heading: "Quick Links",
+        links: [
+            { label: "Pricing", href: "#pricing" },
+            { label: "Privacy Policy", href: "/" },
+            { label: "FAQ", href: "#faq" },
+        ],
+    },
 ];
 
 const socials = [
@@ -26,41 +58,40 @@ const socials = [
 ];
 
 export default function Footer() {
+    const [isContactOpen, setIsContactOpen] = useState(false);
     return (
         <footer className="w-full overflow-hidden bg-black font-aeonik">
             <div className="mx-auto w-[85%] px-6 pb-10 pt-14">
-                
+
                 <div className="flex flex-col gap-12 lg:flex-row lg:justify-between">
-                    
+
                     {/* Brand */}
                     <div className="max-w-xs text-center lg:text-left">
-                        <Image 
-                            src={logo} 
-                            alt="Dooyt" 
-                            className="h-8 w-auto mx-auto lg:mx-0" 
-                            priority 
+                        <Image
+                            src={logo}
+                            alt="Dooyt"
+                            className="h-8 w-auto mx-auto lg:mx-0"
+                            priority
                         />
 
                         <p className="mt-4 text-sm leading-relaxed text-gray-400">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting
-                            industry.
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                         </p>
 
                         <div className="mt-5 flex items-center justify-center lg:justify-start gap-3">
-                            <Image 
-                                src={apple} 
-                                alt="Google Play" 
-                                className="h-14 w-40 max-w-[140px]" 
+                            <Image
+                                src={apple}
+                                alt="App Store"
+                                className="h-14 w-40 max-w-[140px]"
                             />
 
-                            <Image 
-                                src={googleplay} 
-                                alt="Google Play" 
-                                className="h-14 w-40 max-w-[140px]" 
+                            <Image
+                                src={googleplay}
+                                alt="Google Play"
+                                className="h-14 w-40 max-w-[140px]"
                             />
                         </div>
                     </div>
-
 
                     {/* Link columns */}
                     <div className="
@@ -73,28 +104,32 @@ export default function Footer() {
                                 <h4 className="text-sm font-semibold text-white">
                                     {column.heading}
                                 </h4>
-
-                                <ul className="mt-4 flex flex-col gap-3">
-                                    {column.links.map((link) => (
-                                        <li key={link}>
-                                            <a
-                                                href="#"
+                                {column.links.map((link) => (
+                                    <li key={link.label}>
+                                        {link.href === "modal:contact" ? (
+                                            <button
+                                                onClick={() => setIsContactOpen(true)}
                                                 className="text-sm text-gray-400 transition-colors hover:text-white"
                                             >
-                                                {link}
-                                            </a>
-                                        </li>
-                                    ))}
-                                </ul>
+                                                {link.label}
+                                            </button>
+                                        ) : (
+                                            <Link
+                                                href={link.href}
+                                                className="text-sm text-gray-400 transition-colors hover:text-white"
+                                            >
+                                                {link.label}
+                                            </Link>
+                                        )}
+                                    </li>
+                                ))}
                             </div>
                         ))}
                     </div>
 
                 </div>
 
-
                 <div className="mt-10 border-t border-gray-800" />
-
 
                 {/* Bottom */}
                 <div className="
@@ -106,7 +141,6 @@ export default function Footer() {
                         Copyright © 2025 DOOYT. All Rights Reserved
                     </p>
 
-
                     <div className="flex items-center gap-3">
                         {socials.map(({ label, src }) => (
                             <a
@@ -115,10 +149,10 @@ export default function Footer() {
                                 aria-label={label}
                                 className="flex h-10 w-10 items-center justify-center"
                             >
-                                <Image 
-                                    src={src} 
-                                    alt={label} 
-                                    className="h-full w-full" 
+                                <Image
+                                    src={src}
+                                    alt={label}
+                                    className="h-full w-full"
                                 />
                             </a>
                         ))}
@@ -127,13 +161,12 @@ export default function Footer() {
                 </div>
             </div>
 
-
             {/* Background */}
             <div
                 className="
-                   hidden md:block relative w-[85%] mx-auto 
+                    hidden md:block relative w-[85%] mx-auto 
                     select-none overflow-hidden
-                     md:h-[45vh]
+                    md:h-[45vh]
                     max-sm:h-[220px]
                 "
                 aria-hidden="true"
@@ -145,7 +178,10 @@ export default function Footer() {
                     className="object-cover object-center"
                 />
             </div>
-
+            <ContactFormModal
+                open={isContactOpen}
+                onClose={() => setIsContactOpen(false)}
+            />
         </footer>
     );
 }
