@@ -24,11 +24,11 @@ export default function MobileIndustries({ industries }: any) {
                     <Image
                       src={item.image}
                       alt={item.name}
-                      className="w-[90%] h-full object-contain transition-transform duration-500 hover:scale-105"
+                      className="w-[85%] pt-4 rounded-md h-full object-cover transition-transform duration-500 hover:scale-105"
                     />
                   </div>
 
-                  <div className="p-4 flex flex-col gap-1">
+                  <div className="py-4 flex flex-col gap-1 w-[85%]  mx-auto">
                     <h2 className="text-lg font-bold">{item.name}</h2>
                     <p className="text-sm text-gray-600 line-clamp-2">
                       {item.description}

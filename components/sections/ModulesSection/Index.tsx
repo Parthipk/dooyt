@@ -137,7 +137,7 @@ export default function ModulesSection() {
                   {active.name}
                 </h3>
                 <p className="text-gray-600">
-                  {active.description}
+                  {active.description}sdfg
                 </p>
               </motion.div>
             </AnimatePresence>
