@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🚀 Project Stack
 
-## Getting Started
+Next.js (Frontend)
+Node.js + Express (Backend)
+Tailwind CSS
+shadcn/ui
+MongoDB 
 
-First, run the development server:
+▶️ How to Run
 
-```bash
+Frontend
+cd frontend
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Open: http://localhost:3000
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Backend
+cd backend
+npm install
+Create .env file
+npm run dev
+Runs on: http://localhost:3001
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+⚙️ Environment Variables
+Frontend:
+NEXT_PUBLIC_API_URL=http://localhost:3001/api
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Backend:
 
-## Learn More
+MONGO_URL=' '
 
-To learn more about Next.js, take a look at the following resources:
+API_KEY=dooyt-demo-key-2026
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+api doc = https://documenter.getpostman.com/view/39190122/2sBXwwoo52
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Note: The Aeonik font is not included in this project because it is a licensed commercial font and cannot be shared or uploaded in the repository. Therefore, a fallback font has been used in the project setup.
