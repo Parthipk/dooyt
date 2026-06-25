@@ -63,7 +63,7 @@ export default function Footer() {
         <footer className="w-full overflow-hidden bg-black font-aeonik">
             <div className="mx-auto w-[85%] px-6 pb-10 pt-14">
 
-                <div className="flex flex-col gap-12 lg:flex-row lg:justify-between">
+                <div className="flex flex-col gap-12 lg:flex-row lg:justify-between items-center">
 
                     {/* Brand */}
                     <div className="max-w-xs text-center lg:text-left">
@@ -164,7 +164,7 @@ export default function Footer() {
             {/* Background */}
             <div
                 className="
-                    hidden md:block relative w-[85%] mx-auto 
+                    hidden xl:block relative w-[85%] mx-auto 
                     select-none overflow-hidden
                     md:h-[45vh]
                     max-sm:h-[220px]

@@ -64,7 +64,7 @@ export default function ContactForm({
       <button
         type="submit"
         disabled={loading}
-        className="bg-primary text-white py-2 rounded-md hover:opacity-90 transition"
+        className="bg-orange text-white py-2 rounded-md hover:opacity-90 transition"
       >
         {loading ? "Sending..." : buttonText || "Send Message"}
       </button>

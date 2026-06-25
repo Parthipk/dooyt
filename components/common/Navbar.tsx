@@ -9,24 +9,21 @@ import { useState } from "react";
 import RequestFormModal from "@/components/forms/RequestFormModal";
 import ContactFormModal from "@/components/forms/ContactFormModal";
 
-
 export default function Navbar() {
     const [openRequest, setOpenRequest] = useState(false);
-    const [openContact, setOpenContact] = useState(false); 
+    const [openContact, setOpenContact] = useState(false);
     const [sheetOpen, setSheetOpen] = useState(false);
- 
+
+    const closeSheet = () => setSheetOpen(false);
+
     const openContactModal = () => {
-        setSheetOpen(false);
-        setTimeout(() => {
-            setOpenContact(true);
-        }, 250);
+        closeSheet();
+        setTimeout(() => setOpenContact(true), 200);
     };
- 
+
     const openRequestModal = () => {
-        setSheetOpen(false);
-        setTimeout(() => {
-            setOpenRequest(true);
-        }, 250);
+        closeSheet();
+        setTimeout(() => setOpenRequest(true), 200);
     };
 
     return (
@@ -57,7 +54,7 @@ export default function Navbar() {
                         </button>
                     </div>
 
-                    {/* Buttons */}
+                    {/* Desktop Button */}
                     <div className="hidden lg:flex gap-3">
                         <button
                             onClick={() => setOpenRequest(true)}
@@ -69,17 +66,32 @@ export default function Navbar() {
 
                     {/* Mobile Menu */}
                     <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
-                        <SheetTrigger className="md:hidden group">
+                        <SheetTrigger className="md:hidden">
                             <Menu className="w-7 h-7 text-orange" />
                         </SheetTrigger>
 
-                        <SheetContent side="right" className="bg-(--primary-background) px-8">
-                            <div className="h-full flex flex-col items-center justify-center gap-8 text-secondary font-inter font-medium">
+                        <SheetContent
+                            side="right"
+                            className="bg-(--primary-background) px-8"
+                            onCloseAutoFocus={(e) => e.preventDefault()} // ✅ FIX SCROLL JUMP
+                        >
+                            <div className="h-full flex flex-col items-center justify-center gap-8 text-black font-inter font-medium">
 
-                                <Link href="#features">Features</Link>
-                                <Link href="#benefits">Benefits</Link>
-                                <Link href="#pricing">Pricing</Link>
-                                <Link href="#testimonials">Testimonials</Link>
+                                <Link href="#features" onClick={closeSheet}>
+                                    Features
+                                </Link>
+
+                                <Link href="#benefits" onClick={closeSheet}>
+                                    Benefits
+                                </Link>
+
+                                <Link href="#pricing" onClick={closeSheet}>
+                                    Pricing
+                                </Link>
+
+                                <Link href="#testimonials" onClick={closeSheet}>
+                                    Testimonials
+                                </Link>
 
                                 <button onClick={openContactModal}>
                                     Contact Us
@@ -94,7 +106,6 @@ export default function Navbar() {
                             </div>
                         </SheetContent>
                     </Sheet>
-
                 </div>
             </nav>
 
