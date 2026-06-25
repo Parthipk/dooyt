@@ -4,14 +4,14 @@ import bg2 from "@/app/assets/advertisement/advmobile.png";
 
 export default function Index() {
     return (
-        <div className="relative w-[85%] h-[100vh] md:h-[70vh] overflow-hidden mx-auto font-aeonik">
+        <div className="relative w-[85%] h-[100vh]   lg:h-[35vh]  xl:h-[70vh] overflow-hidden mx-auto font-aeonik">
 
             {/* Desktop Background */}
             <Image
                 src={bg}
                 alt="background"
                 fill
-                className="object-cover hidden md:block"
+                className="object-cover hidden lg:block"
                 priority
             />
  
@@ -20,12 +20,12 @@ export default function Index() {
             <div className="absolute inset-0 flex items-center md:items-center justify-center md:justify-start">
 
                 {/* Desktop Layout */}
-                <div className="hidden md:block ml-[7.5%] max-w-xl text-white text-left">
-                    <h1 className="text-4xl md:text-5xl font-bold leading-tight">
+                <div className="hidden lg:block ml-[7.5%] max-w-xl text-white text-left mt-20 xl:mt-30">
+                    <h1 className="text-2xl xl:text-5xl font-bold leading-tight">
                         Make Every Day A Win with Dooyt
                     </h1>
 
-                    <p className="mt-4 text-sm md:text-base text-gray-200">
+                    <p className="mt-4 text-sm md:text-base text-gray-200 w-[60%]">
                         Are you looking to boost your business productivity? Replace all those multiple apps with a single powerful solution, Dooyt.
                     </p>
 
@@ -35,7 +35,7 @@ export default function Index() {
                 </div>
 
                 {/* Mobile Layout (column + image at bottom) */}
-                <div className="flex flex-col md:hidden items-center text-center  px-6  ">
+                <div className="flex flex-col lg:hidden items-center text-center  px-6  ">
 
                     <h1 className="text-3xl font-bold leading-tight text-primary">
                         Make Every Day A Win with Dooyt

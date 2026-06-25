@@ -44,7 +44,7 @@ export default function Index() {
   }
 
   return (
-    <div className="flex w-[85%] flex-col items-center bg-white px-6 py-20 font-aeonik mx-auto">
+    <div className="flex w-[85%] flex-col items-center bg-white px-6   font-aeonik mx-auto   mx-auto mt-15 md:mt20">
       {/* Header */}
       <div className="mb-12 flex max-w-xl flex-col items-center text-center">
         <p className="text-sm font-semibold text-orange-500">Testimonials</p>

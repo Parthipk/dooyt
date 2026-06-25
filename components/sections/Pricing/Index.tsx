@@ -20,8 +20,7 @@ type PlanUI = {
 };
 
 const ANNUAL_DISCOUNT = 0.15;
-
-/* Convert API data -> UI format */
+ 
 const toUIPlan = (plan: any): PlanUI => ({
   name: plan.name,
   description: plan.tagline,
@@ -123,7 +122,9 @@ export default function Pricing() {
   const [starter, pro, enterprise] = uiPlans;
 
   return (
-    <div className="flex min-h-screen w-[85%] flex-col items-center mx-auto md:px-6 md:py-16 font-aeonik">
+    <section id="pricing">
+
+    <div className="flex min-h-screen w-[85%] flex-col items-center mx-auto md:px-6  font-aeonik">
       {/* Header */}
       <div className="mb-10 flex flex-col items-center">
         <div className="text-center mt-20">
@@ -164,7 +165,7 @@ export default function Pricing() {
       </div>
 
       {/* Cards */}
-      <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-3">
+      <div className="grid w-full grid-cols-1 gap-6 xl:grid-cols-3">
         {/* Starter */}
         <div className="flex flex-col rounded-[28px] border p-8">
           <PlanHeader plan={starter} billing={billing} />
@@ -196,5 +197,6 @@ export default function Pricing() {
         </div>
       </div>
     </div>
+    </section>
   );
 }

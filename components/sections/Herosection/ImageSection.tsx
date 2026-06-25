@@ -15,8 +15,8 @@ import {
 export default function ImageSection() {
   const slides = [
     { img: bg1, title: "Slide 1" },
-    { img: bg2, title: "Slide 2" },
-    { img: bg3, title: "Slide 3" },
+    { img: bg3, title: "Slide 2" },
+    { img: bg2, title: "Slide 3" },
   ];
 
   return (

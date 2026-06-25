@@ -5,7 +5,7 @@ import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carouse
 
 export default function MobileIndustries({ industries }: any) {
   return (
-    <div className="mt-6 pl-[7.5%] md:hidden">
+    <div className="mt-6 pl-[7.5%] lg:hidden">
       <Carousel className="w-full">
         <CarouselContent className="gap-4">
           {industries.map((item: any, index: number) => {

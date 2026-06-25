@@ -18,12 +18,11 @@ export default function Home() {
       <ModulesSection />
       <FeatureSection />
       <IndustriesSection />
-      <Advertisement/>
-      <Pricing/>
-      <Advantage/>
-      <Testimonials/>
-      <Faqs/>
-
+      <Advertisement />
+      <Pricing />
+      <Advantage />
+      <Testimonials />
+      <Faqs />
     </>
   );
 }

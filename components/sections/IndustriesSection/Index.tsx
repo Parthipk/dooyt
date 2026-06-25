@@ -23,10 +23,10 @@ if (loading) return <IndustriesShimmer />;
 
 
   return (
-    <div className="w-full flex flex-col justify-center font-aeonik">
+    <div className="w-full flex flex-col justify-center font-aeonik mt-15 md:mt-20">
 
       {/* HEADER */}
-      <div className="text-center w-full px-[7.5%] mt-20 mx-auto">
+      <div className="text-center w-full px-[7.5%] mx-auto">
         <p className="text-orange-500 text-sm">Industries</p>
         <h2 className="text-3xl font-semibold">
           Smart Solutions for Every Industry

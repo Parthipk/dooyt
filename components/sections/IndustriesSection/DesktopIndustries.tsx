@@ -18,7 +18,7 @@ export default function DesktopIndustries({ industries }: any) {
   ];
 
   return (
-    <div className="hidden md:grid w-[85%] grid-cols-10 grid-rows-10 gap-2 mx-auto">
+    <div className="hidden lg:grid w-[85%] grid-cols-10 grid-rows-10 gap-2 mx-auto">
       {cards.map((c) => (
         <Card key={c.i} {...c} />
       ))}

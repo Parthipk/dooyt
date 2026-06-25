@@ -23,7 +23,7 @@ export default function Index() {
   }
 
   return (
-    <div className="mx-auto w-[85%] px-0 md:px-6 font-aeonik mb-10">
+    <div className="mx-auto w-[85%] px-0 md:px-6 font-aeonik   mx-auto my-15 md:my20 ">
       <h2 className="text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
         Frequently Asked Questions (FAQ)
       </h2>

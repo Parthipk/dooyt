@@ -25,15 +25,15 @@ export default function Index() {
   ];
 
   return (
-    <div className="w-[85%] flex flex-col items-center gap-4 py-10 mx-auto">
+    <div className="w-[85%] flex flex-col items-center gap-4   mx-auto mt-15 md:mt20">
       <p className="text-sm text-secondary font-medium">
         Experience the Dooyt Advantage
       </p>
-      <div className="flex flex-nowrap md:flex-wrap md:justify-center gap-3 w-full md:w-[70%] overflow-x-auto md:overflow-visible px-2 scrollbar-hide">
+      <div className="flex flex-nowrap xl:flex-wrap xl:justify-center gap-3 w-full xl:w-[70%] overflow-x-auto xl:overflow-visible px-2 scrollbar-hide">
         {items.map((item, i) => (
           <div
             key={i}
-            className="flex-shrink-0 md:flex-shrink flex items-center gap-2 px-4 py-2 rounded-full
+            className="flex-shrink-0 xl:flex-shrink flex items-center gap-2 px-4 py-2 rounded-full
             bg-gradient-to-b from-[#FEF0E8] to-[#FAFAF7]
             text-sm text-orange-700 shadow-sm"
           >
